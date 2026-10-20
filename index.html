@@ -25,18 +25,7 @@
     .login-panel button:hover,.btn-primary:hover{background:#285a81;}
     .error{min-height:1.6em;margin:9px 0 -7px;color:#c13232;font-size:13px;}
     .page-wrap{width:min(1170px,calc(100% - 48px));margin:0 auto;}
-    header{background:#fff;border-bottom:1px solid #e2e8f0;}
-    .heading{padding:28px 0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;}
-    .eyebrow{font-size:12px;letter-spacing:.06em;font-weight:800;color:#52738b;}
-    h2{font-size:27px;line-height:1.4;margin:5px 0 4px;letter-spacing:-.02em;}
-    .subtitle{font-size:13px;color:#667589;margin:0;}
-    .heading-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-    .action{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 15px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#334155;font-size:13px;font-weight:700;}
-    .action:hover{background:#f0f5f9;}
-    main{padding:27px 0 52px;}
-    .section-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;}
-    .section-top strong{font-size:14px;}
-    .section-top span{font-size:12px;color:#708198;}
+    main{padding:24px 0 52px;}
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
     .card{background:#fff;border:1px solid #dfe6ee;border-radius:12px;padding:24px 20px 19px;display:flex;flex-direction:column;align-items:center;min-width:0;box-shadow:0 2px 7px rgba(25,45,64,.028);break-inside:avoid;}
     .qr-link{display:flex;align-items:center;justify-content:center;width:196px;height:196px;max-width:100%;border-radius:5px;text-decoration:none;}
@@ -44,18 +33,13 @@
     .qr-link svg{width:100%;height:100%;display:block;image-rendering:pixelated;}
     .code{font-size:12px;line-height:1.5;font-weight:800;color:#72849a;letter-spacing:.04em;margin-top:15px;}
     .screen-name{margin:4px 0 0;font-weight:800;color:#26394b;text-align:center;line-height:1.5;font-size:16px;overflow-wrap:anywhere;}
-    .open-link{margin-top:9px;text-align:center;text-decoration:none;color:#285d85;font-size:12px;font-weight:600;}
-    .open-link:hover{text-decoration:underline;}
-    .footnote{margin:22px 0 0;color:#788699;text-align:center;font-size:12px;}
-    @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}.heading{align-items:flex-start;flex-direction:column;gap:14px;}}
-    @media(max-width:550px){.page-wrap{width:calc(100% - 28px)}.grid{grid-template-columns:1fr;gap:12px}.card{padding:24px 12px}.heading{padding:20px 0}.login-panel{padding:32px 24px;}h2{font-size:23px}.section-top span{display:none;}}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media(max-width:550px){.page-wrap{width:calc(100% - 28px)}.grid{grid-template-columns:1fr;gap:12px}.card{padding:24px 12px}.login-panel{padding:32px 24px;}}
     @page{size:A4 portrait;margin:10mm;}
     @media print{
       body{background:#fff!important;color:#000;print-color-adjust:exact;-webkit-print-color-adjust:exact;}
-      header{border:0;}.heading{padding:0 0 10px;}.heading-actions,.open-link,.footnote,.subtitle,.eyebrow{display:none!important;}
-      h2{font-size:20px;margin:0;}
       .page-wrap{width:100%;max-width:none;}
-      main{padding:6px 0;}.section-top{margin:0 0 10px;}
+      main{padding:6px 0;}
       .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;}
       .card{border:1px solid #cbd5e1;border-radius:5px;padding:10px 5px 11px;box-shadow:none;}
       .qr-link{width:135px;height:135px;}.code{font-size:10px;margin-top:5px;}.screen-name{font-size:11px;}
@@ -77,23 +61,8 @@
     </div>
   </section>
   <div id="gallery-view" class="hidden">
-    <header>
-      <div class="page-wrap heading">
-        <div>
-          <div class="eyebrow">GAMBOO APP / WIREFRAME</div>
-          <h2>画面QRコード一覧</h2>
-          <p class="subtitle">QRコードを読み込むと、各画面を開けます。</p>
-        </div>
-        <div class="heading-actions">
-          <button type="button" class="action" id="print-button">一覧を印刷</button>
-          <button type="button" class="action" id="lock-button">ロック</button>
-        </div>
-      </div>
-    </header>
     <main class="page-wrap">
-      <div class="section-top"><strong id="screen-count">全9画面</strong><span>QRコードをクリックしてページを開くこともできます</span></div>
       <div class="grid" id="qr-grid"></div>
-      <p class="footnote">QRコードは現在の公開URLから自動生成されます。</p>
     </main>
   </div>
   <script src="./assets/qrcode-generator.js"></script>
@@ -216,17 +185,10 @@
         const title = document.createElement('h3');
         title.className = 'screen-name';
         title.textContent = page.title;
-        const link = document.createElement('a');
-        link.className = 'open-link';
-        link.href = url;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = 'ページを開く ↗';
-        card.append(qrLink, code, title, link);
+        card.append(qrLink, code, title);
         frag.append(card);
       }
       qrGrid.append(frag);
-      document.getElementById('screen-count').textContent = `全${PAGES.length}画面`;
       built = true;
     }
 
@@ -239,13 +201,6 @@
       renderGallery();
     }
 
-    function lock() {
-      try { sessionStorage.removeItem(AUTH_KEY); } catch (_) { /* Private mode */ }
-      galleryView.classList.add('hidden');
-      loginView.classList.remove('hidden');
-      passwordInput.focus();
-    }
-
     loginForm.addEventListener('submit', async event => {
       event.preventDefault();
       errorText.textContent = '';
@@ -256,8 +211,6 @@
         errorText.textContent = '認証できませんでした。HTTPSで開き直してください。';
       }
     });
-    document.getElementById('lock-button').addEventListener('click', lock);
-    document.getElementById('print-button').addEventListener('click', () => window.print());
     try {
       if (sessionStorage.getItem(AUTH_KEY) === '1') unlock();
       else passwordInput.focus();
