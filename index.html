@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>画面QRコード一覧 | Gambooアプリ</title>
+  <style>
+    :root{ color-scheme:light; font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",Meiryo,sans-serif; font-synthesis:none; }
+    *{ box-sizing:border-box; }
+    html,body{min-height:100%; margin:0;}
+    body{background:#f4f6f8;color:#1e293b;font-size:15px;line-height:1.65;}
+    button,input{font:inherit;}
+    button{cursor:pointer;}
+    .hidden{display:none!important;}
+    .login-view{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;background:linear-gradient(160deg,#edf2f7,#f7f9fc);}
+    .login-panel{width:min(100%,420px);padding:40px 36px 36px;background:#fff;border:1px solid #e1e7ee;border-radius:16px;box-shadow:0 16px 52px rgba(21,35,52,.08);}
+    .brand-label{font-size:13px;letter-spacing:.055em;font-weight:800;color:#355c7b;}
+    .login-panel h1{margin:14px 0 4px;font-size:25px;line-height:1.4;letter-spacing:-.02em;}
+    .login-panel p{color:#64748b;font-size:14px;margin:0 0 26px;}
+    .login-panel label{display:block;font-weight:700;font-size:14px;margin-bottom:8px;}
+    .login-panel input{height:48px;padding:0 14px;width:100%;border:1px solid #a9b9c9;border-radius:8px;background:#fff;color:#0f172a;}
+    .login-panel input:focus{outline:3px solid #c4def5;border-color:#326a99;}
+    .login-panel button{margin-top:18px;width:100%;padding:12px 20px;border:0;border-radius:8px;background:#193d5d;color:#fff;font-weight:700;}
+    .login-panel button:hover,.btn-primary:hover{background:#285a81;}
+    .error{min-height:1.6em;margin:9px 0 -7px;color:#c13232;font-size:13px;}
+    .page-wrap{width:min(1170px,calc(100% - 48px));margin:0 auto;}
+    header{background:#fff;border-bottom:1px solid #e2e8f0;}
+    .heading{padding:28px 0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;}
+    .eyebrow{font-size:12px;letter-spacing:.06em;font-weight:800;color:#52738b;}
+    h2{font-size:27px;line-height:1.4;margin:5px 0 4px;letter-spacing:-.02em;}
+    .subtitle{font-size:13px;color:#667589;margin:0;}
+    .heading-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+    .action{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 15px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#334155;font-size:13px;font-weight:700;}
+    .action:hover{background:#f0f5f9;}
+    main{padding:27px 0 52px;}
+    .section-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;}
+    .section-top strong{font-size:14px;}
+    .section-top span{font-size:12px;color:#708198;}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+    .card{background:#fff;border:1px solid #dfe6ee;border-radius:12px;padding:24px 20px 19px;display:flex;flex-direction:column;align-items:center;min-width:0;box-shadow:0 2px 7px rgba(25,45,64,.028);break-inside:avoid;}
+    .qr-link{display:flex;align-items:center;justify-content:center;width:196px;height:196px;max-width:100%;border-radius:5px;text-decoration:none;}
+    .qr-link:focus-visible{outline:3px solid #447cb0;outline-offset:4px;}
+    .qr-link svg{width:100%;height:100%;display:block;image-rendering:pixelated;}
+    .code{font-size:12px;line-height:1.5;font-weight:800;color:#72849a;letter-spacing:.04em;margin-top:15px;}
+    .screen-name{margin:4px 0 0;font-weight:800;color:#26394b;text-align:center;line-height:1.5;font-size:16px;overflow-wrap:anywhere;}
+    .open-link{margin-top:9px;text-align:center;text-decoration:none;color:#285d85;font-size:12px;font-weight:600;}
+    .open-link:hover{text-decoration:underline;}
+    .footnote{margin:22px 0 0;color:#788699;text-align:center;font-size:12px;}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}.heading{align-items:flex-start;flex-direction:column;gap:14px;}}
+    @media(max-width:550px){.page-wrap{width:calc(100% - 28px)}.grid{grid-template-columns:1fr;gap:12px}.card{padding:24px 12px}.heading{padding:20px 0}.login-panel{padding:32px 24px;}h2{font-size:23px}.section-top span{display:none;}}
+    @page{size:A4 portrait;margin:10mm;}
+    @media print{
+      body{background:#fff!important;color:#000;print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+      header{border:0;}.heading{padding:0 0 10px;}.heading-actions,.open-link,.footnote,.subtitle,.eyebrow{display:none!important;}
+      h2{font-size:20px;margin:0;}
+      .page-wrap{width:100%;max-width:none;}
+      main{padding:6px 0;}.section-top{margin:0 0 10px;}
+      .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;}
+      .card{border:1px solid #cbd5e1;border-radius:5px;padding:10px 5px 11px;box-shadow:none;}
+      .qr-link{width:135px;height:135px;}.code{font-size:10px;margin-top:5px;}.screen-name{font-size:11px;}
+    }
+  </style>
+</head>
+<body>
+  <section id="login-view" class="login-view" aria-label="パスワード認証">
+    <div class="login-panel">
+      <div class="brand-label">GAMBOO APP / WIREFRAME</div>
+      <h1>画面QRコード一覧</h1>
+      <p>閲覧するにはパスワードを入力してください。</p>
+      <form id="login-form" novalidate>
+        <label for="password">パスワード</label>
+        <input id="password" type="password" autocomplete="current-password" spellcheck="false" required autofocus>
+        <div id="login-error" class="error" role="alert" aria-live="polite"></div>
+        <button type="submit">認証して開く</button>
+      </form>
+    </div>
+  </section>
+  <div id="gallery-view" class="hidden">
+    <header>
+      <div class="page-wrap heading">
+        <div>
+          <div class="eyebrow">GAMBOO APP / WIREFRAME</div>
+          <h2>画面QRコード一覧</h2>
+          <p class="subtitle">QRコードを読み込むと、各画面を開けます。</p>
+        </div>
+        <div class="heading-actions">
+          <button type="button" class="action" id="print-button">一覧を印刷</button>
+          <button type="button" class="action" id="lock-button">ロック</button>
+        </div>
+      </div>
+    </header>
+    <main class="page-wrap">
+      <div class="section-top"><strong id="screen-count">全9画面</strong><span>QRコードをクリックしてページを開くこともできます</span></div>
+      <div class="grid" id="qr-grid"></div>
+      <p class="footnote">QRコードは現在の公開URLから自動生成されます。</p>
+    </main>
+  </div>
+  <script src="./assets/qrcode-generator.js"></script>
+  <script>
+    'use strict';
+    const PAGES = [
+    {
+        "file": "SCR-01_ホーム.html",
+        "code": "SCR-01",
+        "title": "ホーム"
+    },
+    {
+        "file": "SCR-02_出走表_場一覧.html",
+        "code": "SCR-02",
+        "title": "出走表（場一覧）"
+    },
+    {
+        "file": "SCR-02-AUTO_出走表_オート場一覧.html",
+        "code": "SCR-02-AUTO",
+        "title": "出走表（オートレース・場一覧）"
+    },
+    {
+        "file": "SCR-03_出走表詳細.html",
+        "code": "SCR-03",
+        "title": "出走表詳細"
+    },
+    {
+        "file": "SCR-03_出走表詳細_9車立て.html",
+        "code": "SCR-03",
+        "title": "出走表詳細（9車立て）"
+    },
+    {
+        "file": "SCR-03_マニア分析タブ.html",
+        "code": "SCR-03",
+        "title": "マニア分析タブ"
+    },
+    {
+        "file": "SCR-04_オート出走表詳細.html",
+        "code": "SCR-04",
+        "title": "オート出走表詳細"
+    },
+    {
+        "file": "SCR-04_データ解析ラボ.html",
+        "code": "SCR-04",
+        "title": "データ解析ラボ"
+    },
+    {
+        "file": "SCR-07_マイページ.html",
+        "code": "SCR-07",
+        "title": "マイページ"
+    }
+];
+    // This is a client-side display gate only, not HTTP Basic authentication.
+    // GitHub Pages is static; the original HTML files can still be opened directly.
+    const PASSWORD_SHA256 = '7578ca5ba39028f7f0b0a9005de573b1187eff96afd0bfbbd2d9849e4a3973ad';
+    const AUTH_KEY = 'gambooapp-qr-index-unlocked';
+    const loginView = document.getElementById('login-view');
+    const galleryView = document.getElementById('gallery-view');
+    const loginForm = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password');
+    const errorText = document.getElementById('login-error');
+    const qrGrid = document.getElementById('qr-grid');
+    let built = false;
+
+    async function sha256(input) {
+      const encoded = new TextEncoder().encode(input);
+      const hash = await crypto.subtle.digest('SHA-256', encoded);
+      return Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function createQR(url) {
+      const qr = new GambooQRCode.QRCode(0, GambooQRCode.ErrorCorrectLevel.M);
+      qr.addData(url);
+      qr.make();
+      const count = qr.getModuleCount();
+      const quiet = 4;
+      const size = count + quiet * 2;
+      const ns = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+      svg.setAttribute('role','img');
+      svg.setAttribute('aria-label','QRコード');
+      svg.setAttribute('shape-rendering','crispEdges');
+      const bg = document.createElementNS(ns, 'rect');
+      bg.setAttribute('width', String(size));
+      bg.setAttribute('height', String(size));
+      bg.setAttribute('fill','#ffffff');
+      svg.appendChild(bg);
+      const dark = document.createElementNS(ns, 'path');
+      dark.setAttribute('fill', '#111111');
+      const fragments = [];
+      for (let y = 0; y < count; y++) {
+        for (let x = 0; x < count; x++) {
+          if (qr.isDark(y, x)) fragments.push(`M${x + quiet} ${y + quiet}h1v1h-1z`);
+        }
+      }
+      dark.setAttribute('d', fragments.join(''));
+      svg.appendChild(dark);
+      return svg;
+    }
+
+    function renderGallery() {
+      if (built) return;
+      const frag = document.createDocumentFragment();
+      const base = new URL('./', document.baseURI);
+      for (const page of PAGES) {
+        const url = new URL(page.file, base).href;
+        const card = document.createElement('article');
+        card.className = 'card';
+        const qrLink = document.createElement('a');
+        qrLink.className = 'qr-link';
+        qrLink.href = url;
+        qrLink.target = '_blank';
+        qrLink.rel = 'noopener noreferrer';
+        qrLink.title = `${page.code} ${page.title}を開く`;
+        qrLink.appendChild(createQR(url));
+        const code = document.createElement('div');
+        code.className = 'code';
+        code.textContent = page.code;
+        const title = document.createElement('h3');
+        title.className = 'screen-name';
+        title.textContent = page.title;
+        const link = document.createElement('a');
+        link.className = 'open-link';
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'ページを開く ↗';
+        card.append(qrLink, code, title, link);
+        frag.append(card);
+      }
+      qrGrid.append(frag);
+      document.getElementById('screen-count').textContent = `全${PAGES.length}画面`;
+      built = true;
+    }
+
+    function unlock() {
+      try { sessionStorage.setItem(AUTH_KEY, '1'); } catch (_) { /* Private mode */ }
+      loginView.classList.add('hidden');
+      galleryView.classList.remove('hidden');
+      errorText.textContent = '';
+      passwordInput.value = '';
+      renderGallery();
+    }
+
+    function lock() {
+      try { sessionStorage.removeItem(AUTH_KEY); } catch (_) { /* Private mode */ }
+      galleryView.classList.add('hidden');
+      loginView.classList.remove('hidden');
+      passwordInput.focus();
+    }
+
+    loginForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      errorText.textContent = '';
+      try {
+        if (await sha256(passwordInput.value) === PASSWORD_SHA256) unlock();
+        else { errorText.textContent = 'パスワードが違います。'; passwordInput.select(); }
+      } catch (_) {
+        errorText.textContent = '認証できませんでした。HTTPSで開き直してください。';
+      }
+    });
+    document.getElementById('lock-button').addEventListener('click', lock);
+    document.getElementById('print-button').addEventListener('click', () => window.print());
+    try {
+      if (sessionStorage.getItem(AUTH_KEY) === '1') unlock();
+      else passwordInput.focus();
+    } catch (_) { passwordInput.focus(); }
+  </script>
+</body>
+</html>
