@@ -1613,6 +1613,106 @@
         cursor: pointer;
       }
       .os-btn .ic { width: 16px; height: 16px; }
+      .user-points.pts3 {
+        display: block;
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: var(--r-md);
+        padding: 2px 12px;
+      }
+      .pt3-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 34px;
+        padding: 6px 0;
+      }
+      .pt3-row + .pt3-row { border-top: 1px solid rgba(154, 91, 0, 0.18); }
+      .pts3 .point-label { font-size: 13px; }
+      .pts3 .point-value { font-size: 18px; }
+      body { font-size: 14px; }
+      .bottom-tab { height: 62px; }
+      .tab-item { font-size: 12px; gap: 3px; }
+      .tab-item .tab-icon { height: 26px; }
+      .tab-item .ic { width: 26px; height: 26px; }
+      .app-header { height: 54px; }
+      .app-header .logo { font-size: 18px; }
+      .app-header .logo span { font-size: 12px; }
+      .icon-btn { width: 44px; height: 44px; }
+      .icon-btn .ic { width: 24px; height: 24px; }
+      .cta-btn { min-height: 40px; padding: 0 14px; font-size: 13px; }
+      .cta-btn .ic { width: 18px; height: 18px; }
+      .page-header { height: 52px; }
+      .page-header .page-header-title,
+      .page-header-title { font-size: 18px; }
+      .page-header .back-btn .ic { width: 28px; height: 28px; }
+      .date-tab,
+      .top-tab { min-height: 50px; font-size: 14px; }
+      .section-header { padding: 14px 12px 8px; }
+      .section-title { font-size: 16px; }
+      .see-all { font-size: 13px; min-height: 40px; }
+      .chip { min-height: 40px; padding: 0 14px; font-size: 13px; }
+      .info-tabs .info-tab { min-height: 52px; font-size: 14px; }
+      .race-tab { min-width: 62px; min-height: 54px; }
+      .race-tab b { font-size: 16px; }
+      .race-tab small { font-size: 12px; }
+      .race-tab.active { min-width: 92px; }
+      .rchip { min-width: 62px; min-height: 54px; }
+      .rchip b { font-size: 16px; }
+      .rchip small { font-size: 12px; }
+      .rchip.next { min-width: 90px; }
+      .action-btn { min-height: 50px; font-size: 14px; }
+      .action-btn .ic { width: 18px; height: 18px; }
+      .sort-btn { font-size: 14px; min-height: 46px; }
+      .list-head .list-count { font-size: 14px; }
+      .comment-row { font-size: 14px; }
+      .comment-row .cr-r { font-size: 14px; }
+      .menu-item { min-height: 56px; }
+      .menu-text { font-size: 15px; }
+      .menu-section-title { font-size: 13px; }
+      .news-title { font-size: 15px; }
+      .news-date { font-size: 13px; }
+      .blog-author { font-size: 14px; }
+      .blog-text { font-size: 15px; }
+
+      .venue-grid.g3 .vcard-name { font-size: 20px; letter-spacing: -0.05em; }
+      .venue-grid.g3 .vcard-meta { font-size: 12px; }
+      .venue-grid.g3 .vcard-r { font-size: 14px; }
+      .venue-grid.g3 .vcard-dl { font-size: 12px; letter-spacing: -0.04em; }
+      .vgroup-name { font-size: 16px; }
+      .vgroup-link { font-size: 13px; }
+      .gbadge { font-size: 12px; }
+      .venue-name { font-size: 23px; }
+      .venue-header { min-height: 48px; }
+      .venue-meta { font-size: 13px; }
+      .grade-badge { font-size: 13px; }
+      .ri-event { font-size: 13px; }
+      .ri-race { font-size: 19px; }
+      .ri-race span { font-size: 15px; }
+      .race-info-bar .race-info-meta { font-size: 13px; }
+      .pk2 .pickup-tile { width: 60px; height: 60px; font-size: 15px; }
+      .pk2 .pickup-reason-main { font-size: 15px; }
+      .pk2 .pickup-reason-sub { font-size: 13px; }
+      .mori-title { font-size: 17px; }
+      .mori-next,
+      .mori-sp { font-size: 13px; }
+
+      .oshi-name { font-size: 16px; }
+      .oshi-act { min-height: 40px; font-size: 13px; }
+      .os-tab { min-height: 44px; font-size: 14px; }
+      .os-chip { min-height: 40px; font-size: 14px; }
+      .os-btn { min-height: 48px; font-size: 14px; }
+      .point-use span { min-height: 40px; font-size: 13px; }
+
+      .mania-table td,
+      .race-table td { font-size: 13px; }
+      .rider-name { font-size: 14px; }
+      .mania-table .c-name { min-width: 88px; width: 88px; }
+      .at td { font-size: 13px; }
+      .rn b { font-size: 14px; }
+      .at .hd { font-size: 19px; }
+      .at .fx2 { min-width: 108px; max-width: 108px; }
+      .wx span { font-size: 13px; }
     </style>
   </head>
   <body>
@@ -1641,14 +1741,18 @@
                     <div class="user-rank">会員番号 1234-5678-9012</div>
                   </div>
                 </div>
-                <div class="user-points">
-                  <div class="point-item">
-                    <div class="point-label">Gambooポイント</div>
-                    <div class="point-value maxcase">9,999,999<span class="unit">pt</span></div>
+                <div class="user-points pts3">
+                  <div class="pt3-row">
+                    <span class="point-label">Gambooポイント</span>
+                    <span class="point-value maxcase">9,999,999<span class="unit">pt</span></span>
                   </div>
-                  <div class="point-item">
-                    <div class="point-label">デルカポイント</div>
-                    <div class="point-value maxcase">9,999,999<span class="unit">pt</span></div>
+                  <div class="pt3-row">
+                    <span class="point-label">デルカポイント</span>
+                    <span class="point-value">1,250<span class="unit">pt</span></span>
+                  </div>
+                  <div class="pt3-row">
+                    <span class="point-label">払戻金</span>
+                    <span class="point-value maxcase">9,999,999<span class="unit">円</span></span>
                   </div>
                 </div>
                 <div class="point-use">
