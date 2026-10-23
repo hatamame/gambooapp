@@ -6,11 +6,6 @@
     <title>Gamboo アプリ ワイヤーフレーム</title>
     <style>
       :root {
-        /* ---- 文字サイズ規定（FB 2026-10-23） ----
-           ・font-size は必ず下記トークン var(--fs-*) で指定する（px／em の直書きはしない）
-           ・単位は px に統一（em/rem は使わない。親要素の大きさに連動させない）
-           ・8段階：xs 11 / s 12 / m 13 / base 14 / l 16 / xl 18 / 2xl 20 / 3xl 24
-           ・最小は 11px（注記・単位・バッジ）。本文 13〜14px、見出し・場名 20px */
         --fs-xs: 11px;
         --fs-s: 12px;
         --fs-m: 13px;
@@ -1291,10 +1286,8 @@
       .sheet { bottom: 62px; }
       .sheet-overlay { inset: 0 0 62px 0; }
 
-      /* G指数（数値＋印） */
       .mania-table td.c-g { white-space: nowrap; }
       .mania-table td.c-g .g-val { margin-right: 2px; }
-      /* 詳細モーダル（マニア分析.png 準拠） */
       .detail-table { width: max-content; min-width: 100%; border-collapse: separate; border-spacing: 0; }
       .detail-table th { line-height: 1.25; border-right: 1px solid var(--c-surface2); }
       .detail-table thead tr + tr th { top: 22px; }
@@ -1312,8 +1305,6 @@
       .detail-table .rt-out .rt-bar { background: #64b5f6; }
       .detail-table tbody tr:nth-child(even) td { background: #fbfaf8; }
 
-      /* ===== FB 2026-10-23 ===== */
-      /* マニア分析タブ：文字サイズ・配色・固定列を出走表（SCR-03）に揃える */
       .race-tabs { gap: 6px; padding: 8px; }
       .race-tab { min-width: 62px; min-height: 54px; padding: 3px 5px; gap: 0; line-height: 1.15; }
       .race-tab b { font-size: var(--fs-l); font-weight: 900; }
@@ -1351,7 +1342,6 @@
       .f6 { background: var(--w6); color: var(--w6-t); border: 1px solid var(--w6-bd); }
       .f7 { background: var(--w7); color: var(--w7-t); border: 1px solid var(--w7-bd); }
       .mk { font-size: var(--fs-base); font-weight: 400; }
-      /* 固定は車番列のみ */
       .mania-table .c-waku,
       .mania-table .c-name { position: static; }
       .mania-table .c-sha { position: sticky; left: 0; z-index: 2; width: 40px; min-width: 40px; padding: 2px !important; }
@@ -1370,12 +1360,10 @@
       .mania-wrap.scrolled .sha-nm { display: block; }
       .mania-wrap.scrolled .mania-table .c-sha { box-shadow: inset -2px 0 0 var(--c-border); }
       .detail-table .sha-nm { display: none !important; }
-      /* 脚質：出走表と同じバッジ */
       .leg-tag { font-size: var(--fs-xs); font-weight: 700; padding: 1px 4px; border-radius: 3px; }
       .leg-escape { background: #fff3cd; color: #856404; }
       .leg-chase { background: #e3f2fd; color: #1565c0; }
       .leg-both { background: #e8f5e9; color: #1b5e20; }
-      /* 評価項目ボタン：出走表の「マニア分析」見出しと同じ配色 */
       .item-btn {
         width: 46px;
         height: 30px;
@@ -1389,7 +1377,6 @@
       }
       .item-btn:active,
       .item-btn.active { background: var(--c-primary); border-color: var(--c-primary-d); color: var(--c-on-primary); }
-      /* 凡例（出走表と共通） */
       .rt-legend {
         position: sticky;
         left: 0;
@@ -1709,7 +1696,6 @@
       const MK = { "◎": "mk-dbl", "○": "mk-o", "△": "mk-tri", "✕": "mk-x" };
       const pct1 = (n, d) => (d ? ((n / d) * 100).toFixed(1) : "0.0");
 
-      // 評価記号から決定的にサンプル成績を作る（g=0: 条件該当 / g=1: すべて）
       function calc(mark, i, idx, g) {
         const seed = (i + 1) * 7 + idx * 5 + g * 3;
         const n = g ? 30 + ((seed * 11) % 75) : 20 + ((seed * 7) % 30);
@@ -1743,7 +1729,6 @@
           const mark = tr.children[8 + idx].textContent.trim();
           return { tr, mark, s: [calc(mark, i, idx, 0), calc(mark, i, idx, 1)] };
         });
-        // 出場選手中順位（3連対率順）
         [0, 1].forEach((g) => {
           [...data].sort((a, b) => b.s[g].r3 - a.s[g].r3).forEach((d, k) => (d.s[g].rank = k + 1));
         });
@@ -1795,7 +1780,6 @@
       bind(secondInner);
       openSheet(secondInner, 0);
 
-      // 出走表と同じ：右スクロールで車番の下に選手名（先頭3文字）
       document.querySelectorAll(".mania-wrap").forEach((w) => {
         const sync = () => w.classList.toggle("scrolled", w.scrollLeft > 24);
         w.addEventListener("scroll", sync, { passive: true });

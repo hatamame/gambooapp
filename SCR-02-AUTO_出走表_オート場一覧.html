@@ -6,11 +6,6 @@
     <title>Gamboo アプリ ワイヤーフレーム</title>
     <style>
       :root {
-        /* ---- 文字サイズ規定（FB 2026-10-23） ----
-           ・font-size は必ず下記トークン var(--fs-*) で指定する（px／em の直書きはしない）
-           ・単位は px に統一（em/rem は使わない。親要素の大きさに連動させない）
-           ・8段階：xs 11 / s 12 / m 13 / base 14 / l 16 / xl 18 / 2xl 20 / 3xl 24
-           ・最小は 11px（注記・単位・バッジ）。本文 13〜14px、見出し・場名 20px */
         --fs-xs: 11px;
         --fs-s: 12px;
         --fs-m: 13px;
@@ -2061,11 +2056,9 @@
       .at .fx2 { min-width: 108px; max-width: 108px; }
       .wx span { font-size: var(--fs-m); }
 
-      /* 区分ラベルは「ミッドナイト」の幅に統一し、開催日目の右隣に置く */
       .kubun { min-width: calc(5.82em + 10px); }
       .venue-header .venue-meta { margin-right: 0; }
       .venue-header .rebate-logo { margin-left: auto; }
-      /* 決勝5%還元の対象レース */
       .rchip.rebate { border: 2px solid var(--c-primary); background: var(--c-primary-bg); }
       .rchip .rchip-rebate {
         margin-top: 2px;
@@ -2081,11 +2074,8 @@
       }
       .comment-text .cr-name { font-weight: 900; color: var(--c-text); margin-right: 4px; }
 
-      /* ===== FB 2026-10-23 ===== */
-      /* ヘッダー：アイコン（ロゴ）とテキストを左右中央揃え */
       .page-header { justify-content: center; }
       .page-header-title { gap: 6px; }
-      /* 開催区分・ガールズ：グレードより目立たないアウトライン表記（SCR-01と共通） */
       .kubun,
       .girls {
         display: inline-flex;
@@ -2114,9 +2104,7 @@
         height: 22px;
         padding: 0;
       }
-      /* 投票締切の●は削除（左右のバランスを優先） */
       .rchip.live small::before { display: none; }
-      /* Rボタン（上段）＋予想情報ボタン（下段）の2段構成 */
       .rchips { gap: 6px; align-items: stretch; }
       .rcol { flex: 0 0 auto; display: flex; flex-direction: column; gap: 4px; }
       .rcol > .rchip { flex: 1 1 auto; }
@@ -2137,11 +2125,9 @@
         cursor: pointer;
       }
       .rpred.off { background: var(--c-closed-bg); border-color: var(--c-closed-bg); color: var(--c-dis); cursor: default; }
-      /* 中止R：非活性（グレー塗り・タップ不可）。SCR-03のレース選択と共通 */
       .rchip.canceled { background: var(--c-closed-bg); border-color: var(--c-closed-bg); color: var(--c-dis); cursor: default; box-shadow: none; }
       .rchip.canceled b,
       .rchip.canceled small { color: var(--c-dis); }
-      /* ガールズのRはボタン内に併記 */
       .rchip .rchip-girls {
         margin-top: 2px;
         padding: 0 4px;
@@ -2155,11 +2141,9 @@
         white-space: nowrap;
       }
       .rchip .rchip-rebate { font-size: var(--fs-xs); }
-      /* ○○君は右揃え（選手名を読みやすく） */
       .comment-row { display: flex; align-items: center; }
       .comment-row .cr-name { font-weight: 900; color: var(--c-text); min-width: 0; }
       .comment-row .cr-kun { margin-left: auto; padding-left: 8px; white-space: nowrap; font-weight: 800; color: var(--c-primary-d); }
-      /* ○○君が1Rに複数：R表記は1つ、選手ごとに行を分ける */
       .comment-row.multi { align-items: flex-start; }
       .comment-row.multi .cr-r { line-height: 22px; }
       .cr-lines { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }

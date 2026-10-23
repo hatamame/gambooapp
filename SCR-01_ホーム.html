@@ -6,11 +6,6 @@
     <title>Gamboo アプリ ワイヤーフレーム</title>
     <style>
       :root {
-        /* ---- 文字サイズ規定（FB 2026-10-23） ----
-           ・font-size は必ず下記トークン var(--fs-*) で指定する（px／em の直書きはしない）
-           ・単位は px に統一（em/rem は使わない。親要素の大きさに連動させない）
-           ・8段階：xs 11 / s 12 / m 13 / base 14 / l 16 / xl 18 / 2xl 20 / 3xl 24
-           ・最小は 11px（注記・単位・バッジ）。本文 13〜14px、見出し・場名 20px */
         --fs-xs: 11px;
         --fs-s: 12px;
         --fs-m: 13px;
@@ -2337,11 +2332,8 @@
       .wx span { font-size: var(--fs-m); }
       .pk2 .pickup-tile { width: 64px; font-size: var(--fs-base); letter-spacing: -0.06em; }
 
-      /* 区分ラベルは「ミッドナイト」の幅に統一 */
       .kubun { min-width: calc(5.76em + 8px); }
-      /* 遷移バナー（Gambooブログ・ツブッター） */
       .tsubu-link + .tsubu-link { margin-top: 0; }
-      /* 注目レース：車番＋選手名＋〇〇君 */
       .pk-pick { display: flex; align-items: center; gap: 6px; min-width: 0; }
       .pk-pick .pk-text { min-width: 0; }
       .pk-pick .pk-text b { margin-right: 5px; }
@@ -2368,16 +2360,12 @@
       .carno.w8 { background: var(--w8); color: var(--w8-t); border-color: var(--w8-bd); }
       .carno.w9 { background: var(--w9); color: var(--w9-t); border-color: var(--w9-bd); }
 
-      /* ===== FB 2026-10-23 ===== */
-      /* ヘッダー：現行ロゴ画像を仮挿入 */
       .app-header .logo-img { height: 28px; width: auto; display: block; }
-      /* 共通見出し（競輪／オートレース／キャンペーン等）は場名と同じサイズ */
       .vgroup-name,
       .section-title { font-size: var(--fs-2xl); font-weight: 900; letter-spacing: -0.03em; }
       .vgroup-name::before,
       .section-title::before { width: 4px; height: 18px; }
       .vgroup-head { min-height: 44px; }
-      /* グレードアイコン：幅を統一（競輪はローマ数字表記） */
       .gbadge {
         display: inline-flex;
         align-items: center;
@@ -2389,7 +2377,6 @@
       }
       .g3 .vcard-top { justify-content: flex-start; gap: 6px; }
       .vcard-day { font-size: var(--fs-s); color: var(--c-sub); white-space: nowrap; }
-      /* 開催区分・ガールズ：グレードより控えめなアウトライン表記 */
       .vcard-tags {
         display: flex;
         flex-wrap: wrap;
@@ -2416,18 +2403,14 @@
         outline: none;
       }
       .girls { border-color: #e7a9bf; color: #b0285b; }
-      /* R・締切時刻を大きく（「締切」テキストは削除） */
       .venue-grid.g3 .vcard-r { font-size: var(--fs-xl); line-height: 1.2; }
       .venue-grid.g3 .vcard-dl { font-size: var(--fs-xl); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--c-text); font-family: var(--ff-num); }
       .venue-grid.g3 .vcard-dl.soon { color: var(--c-error); }
-      /* 終了場：場名は黒字（遷移可能）。「終了」は締切時刻と同じ右下・グレー */
       .vcard.ended .vcard-name { color: var(--c-text) !important; }
       .vcard.ended .vcard-bottom { justify-content: flex-end; }
       .venue-grid.g3 .vcard.ended .vcard-dl { color: var(--c-dis); font-size: var(--fs-l); }
-      /* 森選手：現行画像を仮挿入 */
       .mori-photo { overflow: hidden; background: var(--c-surface2); }
       .mori-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      /* キャンペーンバナー：自動スライド */
       .bn-carousel { position: relative; padding-bottom: 4px; }
       .bn-track {
         display: flex;
@@ -2455,7 +2438,6 @@
       .bn-dots { display: flex; justify-content: center; gap: 5px; }
       .bn-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--c-border); transition: width .2s; }
       .bn-dots i.on { width: 16px; border-radius: 3px; background: var(--c-primary); }
-      /* 注目レース：○○君アイコン主役＋場R・締切1行 */
       .pk3 { gap: 12px; padding: 10px 12px 10px 10px; align-items: center; }
       .pk3 .kun { flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
       .pk3 .kun-ic {
@@ -2508,10 +2490,8 @@
                 <span class="payout-value maxcase">9,999,999<span class="unit">pt</span></span>
               </div>
               <div class="balance-sep"></div>
-              <!-- 払戻金は初期状態で非表示（＊＊＊＊）。タップで表示に切替 -->
               <div class="pt-item pay-toggle masked" role="button" aria-pressed="true" aria-label="払戻金の表示・非表示を切り替え">
                 <span class="payout-label">払戻金</span>
-                <!-- 表示切替アイコンは金額の左側 -->
                 <span class="pay-val">
                   <svg class="ic eye-on" aria-hidden="true"><use href="#ic-eye"></use></svg><svg class="ic eye-off" aria-hidden="true"><use href="#ic-eyeoff"></use></svg>
                   <span class="payout-value maxcase pay-shown">9,999,999<span class="unit">円</span></span>
@@ -2583,7 +2563,6 @@
                     <span class="vcard-dl">21:30</span>
                   </div>
                 </div>
-                <!-- 終了場：遷移は可能なので場名は通常色。「終了」は締切時刻と同じ右下に置く -->
                 <div class="vcard ended">
                   <div class="vcard-top"><span class="gbadge g-f2">FⅡ</span><span class="vcard-day">初日</span></div>
                   <div class="vcard-name">平塚</div>
@@ -2633,7 +2612,6 @@
                 <div class="section-title">キャンペーン</div>
                 <div class="see-all">すべて見る<svg class="ic" aria-hidden="true"><use href="#ic-chevron"></use></svg></div>
               </div>
-              <!-- キャンペーンバナー：自動スライド（3.5秒間隔）＋スワイプ。既存バナー test.jpg を仮挿入 -->
               <div class="bn-carousel" data-interval="3500">
                 <div class="bn-track">
                   <div class="bn"><img src="test.jpg" alt="キャンペーンバナー1" /><span class="bn-fallback">test.jpg（バナー1）</span></div>
@@ -2647,7 +2625,6 @@
               <div class="section-header">
                 <div class="section-title">注目レース</div>
               </div>
-              <!-- 主役は「○○君」：左に○○君アイコンを大きく配置。場Rと締切時刻は1行に横並び -->
               <div class="pickup-card pk3">
                 <div class="kun"><div class="kun-ic imgph">ロケット君<br />アイコン</div><div class="kun-nm">ロケット君</div></div>
                 <div class="pickup-body">
@@ -2669,7 +2646,6 @@
                   <div class="pk-pick"><span class="carno w4">4</span><span class="pk-text ell">倉松涼</span></div>
                 </div>
               </div>
-              <!-- 1Rに複数名が対象の場合：選手行を縦に積む -->
               <div class="pickup-card pk3">
                 <div class="kun"><div class="kun-ic imgph">連勝君<br />アイコン</div><div class="kun-nm">連勝君</div></div>
                 <div class="pickup-body">
@@ -2766,7 +2742,6 @@
       });
     </script>
     <script>
-      // キャンペーンバナー：自動スライド＋ドット連動
       document.querySelectorAll(".bn-carousel").forEach(function (box) {
         var track = box.querySelector(".bn-track");
         var dots = box.querySelectorAll(".bn-dots i");

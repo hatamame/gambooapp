@@ -6,11 +6,6 @@
     <title>Gamboo アプリ ワイヤーフレーム</title>
     <style>
       :root {
-        /* ---- 文字サイズ規定（FB 2026-10-23） ----
-           ・font-size は必ず下記トークン var(--fs-*) で指定する（px／em の直書きはしない）
-           ・単位は px に統一（em/rem は使わない。親要素の大きさに連動させない）
-           ・8段階：xs 11 / s 12 / m 13 / base 14 / l 16 / xl 18 / 2xl 20 / 3xl 24
-           ・最小は 11px（注記・単位・バッジ）。本文 13〜14px、見出し・場名 20px */
         --fs-xs: 11px;
         --fs-s: 12px;
         --fs-m: 13px;
@@ -2013,7 +2008,6 @@
       .at .fx2 { min-width: 108px; max-width: 108px; }
       .wx span { font-size: var(--fs-m); }
 
-      /* 出走表（競輪出走表.png 準拠の項目） */
       .mania-table .th-sub { font-size: var(--fs-xs); font-weight: 400; color: var(--c-sub); }
       .mania-table .th-agari { color: var(--c-error); font-weight: 700; }
       .mania-table thead tr + tr th { top: auto; }
@@ -2024,8 +2018,6 @@
       .mania-table .res-rank { font-size: var(--fs-m); font-weight: 700; color: var(--c-text); }
       .mania-table .res-note { font-size: var(--fs-xs); color: #8a4b00; }
 
-      /* ===== FB 2026-10-23 ===== */
-      /* レース選択：SCR-02 場一覧のRボタンと同じ見た目・状態表現 */
       .race-tabs { gap: 6px; padding: 8px; }
       .race-tab { min-width: 62px; min-height: 54px; padding: 3px 5px; gap: 0; line-height: 1.15; }
       .race-tab b { font-size: var(--fs-l); font-weight: 900; }
@@ -2036,20 +2028,16 @@
       .race-tab.active b { color: var(--c-on-primary); }
       .race-tab.active small { color: #4a2f00; font-weight: 800; }
       .race-tab.active.soon small { color: #8a1c10; }
-      /* 中止：非活性（グレー塗り・タップ不可）。SCR-02 と統一 */
       .race-tab.canceled { background: var(--c-closed-bg); border-color: var(--c-closed-bg); color: var(--c-dis); cursor: default; }
       .race-tab.canceled b,
       .race-tab.canceled small { color: var(--c-dis); font-weight: 800; }
-      /* レース情報：距離（周回）は4行目に小さく */
       .ri-sub { margin-top: 2px; font-size: var(--fs-s); color: var(--c-sub); font-family: var(--ff-num); }
-      /* 並び予想：車番アイコンは出走表と同じ大きさ */
       .lineup-title { font-size: var(--fs-s); font-weight: 700; white-space: nowrap; }
       .lineup-dir { font-size: var(--fs-s); color: var(--c-sub); }
       .lineup-bar { padding: 6px 10px; }
       .lineup-bar .lineup-row { gap: 3px; }
       .lineup-bar .lineup-car { width: 24px; height: 24px; font-size: var(--fs-m); border-radius: var(--r-sm); }
       .lineup-bar .lineup-sep { font-size: var(--fs-s); margin: 0 1px; }
-      /* 出走表＋凡例を縦スクロール領域にまとめる */
       .rt-area {
         flex: 1;
         min-height: 0;
@@ -2062,7 +2050,6 @@
       .rt-area .race-table-wrap { flex: none; overflow-x: auto; overflow-y: hidden; }
       .rt-area .mania-table { height: auto; }
       .mania-table th { line-height: 1.25; }
-      /* 固定は車番列のみ。枠・選手名は一緒にスクロール */
       .mania-table .c-waku,
       .mania-table .c-name { position: static; }
       .mania-table .c-sha {
@@ -2087,10 +2074,8 @@
       }
       .race-table-wrap.scrolled .sha-nm { display: block; }
       .race-table-wrap.scrolled .c-sha { box-shadow: inset -2px 0 0 var(--c-border); }
-      /* マニア分析列：他列と同程度の幅に */
       .mania-table .c-mania { width: 44px; min-width: 44px; padding-left: 2px; padding-right: 2px; }
       .mania-table .th-mania { padding: 1px 4px; line-height: 1.2; border-radius: 4px; }
-      /* 今開催・前開催：着順の横位置を全選手で揃え、着順を大きく */
       .mania-table .res-wrap {
         display: grid;
         grid-auto-flow: column;
@@ -2105,7 +2090,6 @@
       .mania-table .res-time { font-size: var(--fs-xs); }
       .mania-table .res-note { grid-column: 2; font-size: var(--fs-xs); line-height: 1.1; text-align: left; }
       .mania-table .res-date { font-size: var(--fs-xs); line-height: 1.25; white-space: nowrap; }
-      /* 凡例：見出しから外した細かい説明を表の下に集約 */
       .rt-legend {
         padding: 10px 12px 16px;
         border-top: 1px solid var(--c-border);
@@ -2486,7 +2470,6 @@
       </div>
     </div>
     <script>
-      // 出走表：右スクロールで車番下に選手名（先頭3文字）を表示
       document.querySelectorAll(".race-table-wrap").forEach(function (w) {
         function sync() { w.classList.toggle("scrolled", w.scrollLeft > 24); }
         w.addEventListener("scroll", sync, { passive: true });
